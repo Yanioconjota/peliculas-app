@@ -1,0 +1,19 @@
+.swiper-container {
+  height: 330px;
+  width: 100%;
+  .swiper-wrapper {
+    .swiper-slide {
+      background-size: cover;
+    }
+    .movie-description {
+      background-color: rgba(0, 0, 0, .3);
+      bottom: 0;
+      padding: 5px 30px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+[class*="swiper-button-"] {
+  color: white;
+}
