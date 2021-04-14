@@ -23,6 +23,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ng-starrating": "^1.0.20",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "swiper": "^6.5.6",
