@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 import { SwiperModule } from 'swiper/angular';
 import { RatingModule } from 'ng-starrating';
@@ -20,8 +21,9 @@ import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-
   imports: [
     CommonModule,
     RouterModule,
+    PipesModule,
     SwiperModule,
-    RatingModule
+    RatingModule,
   ]
 })
 export class ComponentsModule { }

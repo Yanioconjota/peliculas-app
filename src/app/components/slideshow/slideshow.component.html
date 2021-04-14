@@ -5,8 +5,9 @@
     <!-- Slides -->
     <div *ngFor="let movie of movies"
           class="swiper-slide"
-          [ngStyle]="{
-            'background-image': 'url(http://image.tmdb.org/t/p/w1920_and_h600_multi_faces' + movie.backdrop_path + ')'}">
+          [ngClass]="{ 'default-img' : movie.backdrop_path == null }"
+          [style.background-image]="movie.backdrop_path | slide"
+          >
       <div class="movie-description">
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.overview }}</p>
@@ -23,3 +24,6 @@
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
 </div>
+
+<!-- [ngStyle]="{
+            'background-image': 'url(http://image.tmdb.org/t/p/w1920_and_h600_multi_faces' + movie.backdrop_path + ')'}" -->

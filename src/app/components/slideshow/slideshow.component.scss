@@ -4,6 +4,12 @@
   .swiper-wrapper {
     .swiper-slide {
       background-size: cover;
+      &.default-img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #828388;
+      }
     }
     .movie-description {
       background-color: rgba(0, 0, 0, .3);
