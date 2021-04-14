@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { SlideshowComponent } from './slideshow/slideshow.component';
+import { SwiperModule } from 'swiper/angular';
 
 
 
@@ -14,7 +15,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SwiperModule
   ]
 })
 export class ComponentsModule { }
