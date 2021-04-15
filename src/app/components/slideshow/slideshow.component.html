@@ -7,7 +7,7 @@
           class="swiper-slide"
           [ngClass]="{ 'default-img' : movie.backdrop_path == null }"
           [style.background-image]="movie.backdrop_path | slide"
-          >
+          (click)="onMovieClick(movie)">
       <div class="movie-description">
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.overview }}</p>

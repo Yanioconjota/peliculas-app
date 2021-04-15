@@ -1,1 +1,26 @@
-<p>pelicula works!</p>
+<div class="row mt-5" *ngIf="movie">
+  <div class="col-md-6">
+    <img [src]="movie.poster_path | poster"
+    [alt]="movie.title"
+    class="img-fluid">
+  </div>
+  <div class="col-md-6">
+    <h1>{{ movie.title }}</h1>
+    <div class="d-flex align-items-center">
+      <star-rating [value]="movie.vote_average"
+                   totalstars="10"
+                   checkedcolor="yellow"
+                   uncheckedcolor="grey"
+                   size="13px"
+                   readonly="false"></star-rating>
+      <div class="text-white ml-2">
+        {{ movie.vote_average | number:'1.1-2'}}
+      </div>
+    </div>
+    <hr>
+    <p>{{ movie.overview }}</p>
+    <button type="button"
+    class="btn btn-primary"
+    (click)="regresar()">Regresar</button>
+  </div>
+</div>
