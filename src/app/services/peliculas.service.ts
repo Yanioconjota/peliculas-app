@@ -19,9 +19,13 @@ export class PeliculasService {
     return {
       api_key: '149b27291a08cc92394a34cfaa4b84b1',
       language: 'es-ES',
-      page: this.carteleraPage.toString()
+      page: this.carteleraPage.toString(),
+      include_adult: 'true'
     }
+  }
 
+  resetCarteleraPage() {
+    this.carteleraPage = 1;
   }
 
   getCartelera():Observable<Movie[]> {
@@ -35,13 +39,28 @@ export class PeliculasService {
 
     this.cargando = true;
 
-    return this.http.get<CarteleraResponse>(`${ this.baseUrl }/movie/now_playing`, { params: this.params })
+    return this.http.get<CarteleraResponse>(`${ this.baseUrl }/movie/now_playing`,
+      { params: this.params })
       .pipe(
         map( resp => resp.results),
         tap( () => {
           this.carteleraPage += 1;
           this.cargando = false;
         })
+      )
+  }
+
+  buscarPeliculas(texto: string):Observable<Movie[]> {
+    const params = {
+      ...this.params,
+      page: '1',
+      query: texto
+    };
+
+    return this.http.get<CarteleraResponse>(`${this.baseUrl}/search/movie`,
+      { params })
+      .pipe(
+        map( resp => resp.results)
       )
   }
 }

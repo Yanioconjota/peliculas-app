@@ -1,1 +1,11 @@
-<p>buscar works!</p>
+<h1>buscar películas: <small class="text-capitalize">{{ textoBusqueda }}</small></h1>
+<hr>
+<div class="row">
+  <div class="col">
+    <app-peliculas-poster-grid
+     *ngIf="movies"
+    [movies]="movies"></app-peliculas-poster-grid>
+    <h3 *ngIf="!movies || movies.length === 0 ">No se encontraron resultados para {{ textoBusqueda }}</h3>
+  </div>
+</div>
+

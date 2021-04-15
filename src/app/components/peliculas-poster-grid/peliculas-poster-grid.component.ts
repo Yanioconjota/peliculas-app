@@ -14,7 +14,6 @@ export class PeliculasPosterGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('Estas son las películas que me llegan mediante el decorador @Input ',this.movies)
   }
 
   onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
