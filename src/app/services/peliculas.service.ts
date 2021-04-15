@@ -12,6 +12,7 @@ export class PeliculasService {
   private baseUrl = 'https://api.themoviedb.org/3';
   private carteleraPage = 1;
   public cargando: boolean = false;
+  private queryParams: {};
 
   constructor( private http: HttpClient ) { }
 
@@ -32,6 +33,22 @@ export class PeliculasService {
 
     console.log('Cargando API');
 
+    return this.armarQuery('movie/now_playing');
+  }
+
+  buscarPeliculas(texto: string):Observable<Movie[]> {
+    const params = {
+      ...this.params,
+      query: texto
+    };
+
+    return this.armarQuery('search/movie', {
+      ...this.params,
+      query: texto
+    }, texto);
+  }
+
+  armarQuery(queryString: string, params?: {}, texto?: string) {
     if (this.cargando) {
       //Devuelve un observable del tipo array de movie
       return of([]);
@@ -39,28 +56,21 @@ export class PeliculasService {
 
     this.cargando = true;
 
-    return this.http.get<CarteleraResponse>(`${ this.baseUrl }/movie/now_playing`,
-      { params: this.params })
+    if (!params) {
+      this.queryParams = this.params;
+    } else {
+      this.queryParams = params;
+    }
+
+    return this.http.get<CarteleraResponse>(`${this.baseUrl}/${queryString}`,
+      { params: this.queryParams })
       .pipe(
-        map( resp => resp.results),
-        tap( () => {
+        map(resp => resp.results),
+        tap(() => {
           this.carteleraPage += 1;
           this.cargando = false;
         })
       )
   }
-
-  buscarPeliculas(texto: string):Observable<Movie[]> {
-    const params = {
-      ...this.params,
-      page: '1',
-      query: texto
-    };
-
-    return this.http.get<CarteleraResponse>(`${this.baseUrl}/search/movie`,
-      { params })
-      .pipe(
-        map( resp => resp.results)
-      )
-  }
 }
+///movie/now_playing

@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private peliculasService: PeliculasService) { }
 
   ngOnInit(): void {
+    this.peliculasService.resetCarteleraPage();
     this.peliculasService.getCartelera()
       .subscribe( movies => {
         this.movies = movies;
