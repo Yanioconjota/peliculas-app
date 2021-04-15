@@ -42,10 +42,7 @@ export class PeliculasService {
       query: texto
     };
 
-    return this.armarQuery('search/movie', {
-      ...this.params,
-      query: texto
-    }, texto);
+    return this.armarQuery('search/movie', params, texto);
   }
 
   armarQuery(queryString: string, params?: {}, texto?: string) {
