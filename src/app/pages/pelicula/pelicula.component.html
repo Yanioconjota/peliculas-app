@@ -24,3 +24,12 @@
     (click)="regresar()">Regresar</button>
   </div>
 </div>
+
+<div class="row mt-5" *ngIf="!movie">
+  <div class="col text-center">
+    <img src="assets/img/obiWan.gif" class="img-fluid">
+    <h4>Esa película no existe pa'... Debes volver 
+      <a href="javascript:void(0)" (click)="regresar()">atras</a>
+    </h4>
+  </div>
+</div>
