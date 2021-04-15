@@ -16,7 +16,6 @@ export class CastSlideshowComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.cast)
   }
 
   ngAfterViewInit(): void {

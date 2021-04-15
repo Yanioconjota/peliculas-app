@@ -1,11 +1,12 @@
-<div class="swiper-container">
+<div class="swiper-container mb-5">
   <div class="swiper-wrapper">
     <div *ngFor="let actor of cast"
           class="swiper-slide text-white text-center">
       <img [src]="actor.profile_path | poster"
            [alt]="actor.name"
            class="img-fluid custom-img-thumbnail">
-      <small>{{ actor.name }}</small>
+      <p><small>{{ actor.name }}</small></p>
+      <p><small class="smaller">{{ actor.character }}</small></p>
     </div>
   </div>
 </div>
