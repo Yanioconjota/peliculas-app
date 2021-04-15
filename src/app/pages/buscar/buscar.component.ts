@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/interfaces/cartelera-response';
 import { PeliculasService } from 'src/app/services/peliculas.service';
@@ -8,7 +8,7 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
   templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.scss']
 })
-export class BuscarComponent implements OnInit {
+export class BuscarComponent implements OnInit, OnDestroy {
 
   public textoBusqueda: string;
   public movies: Movie[];
@@ -33,6 +33,7 @@ export class BuscarComponent implements OnInit {
               private peliculasService: PeliculasService) { }
 
   ngOnInit(): void {
+    this.peliculasService.resetCarteleraPage();
     this.activatedRoute.params.subscribe( params => {
       this.peliculasService.buscarPeliculas(params.texto)
         .subscribe( movies => {
@@ -41,6 +42,10 @@ export class BuscarComponent implements OnInit {
           console.log('películas entontradas en búsqueda de:', params.texto,movies);
         })
     })
+  }
+
+  ngOnDestroy(): void {
+    this.peliculasService.resetCarteleraPage();
   }
 
 }
