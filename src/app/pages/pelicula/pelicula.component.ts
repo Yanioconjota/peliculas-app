@@ -13,7 +13,7 @@ import { Cast } from 'src/app/interfaces/credits-response';
 export class PeliculaComponent implements OnInit {
 
   public movie: MovieResponse;
-  public cast: Cast[];
+  public cast: Cast[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private peliculasService: PeliculasService,

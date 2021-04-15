@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <img [src]="movie.poster_path | poster"
     [alt]="movie.title"
-    class="img-fluid">
+    class="img-fluid custom-img-thumbnail">
   </div>
   <div class="col-md-6">
     <h1>{{ movie.title }}</h1>
@@ -22,6 +22,12 @@
     <button type="button"
     class="btn btn-primary"
     (click)="regresar()">Regresar</button>
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="cast.length > 0">
+  <div class="col">
+    <app-cast-slideshow [cast]="cast" ></app-cast-slideshow>
   </div>
 </div>
 

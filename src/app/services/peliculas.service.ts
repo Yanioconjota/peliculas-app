@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { CarteleraResponse, Movie } from '../interfaces/cartelera-response';
-import { CreditsResponse } from '../interfaces/credits-response';
+import { Cast, CreditsResponse } from '../interfaces/credits-response';
 import { MovieResponse } from '../interfaces/movie-response';
 
 @Injectable({
@@ -47,14 +47,14 @@ export class PeliculasService {
     return this.armarQuery('search/movie', params, texto);
   }
 
-  getPelicula(id:string) {
+  getPelicula(id: string): Observable<MovieResponse>{
     return this.http.get<MovieResponse>(`${this.baseUrl}/movie/${id}`,
       { params: this.params }).pipe(
         catchError( err => of(null))
       )
   }
 
-  getCast(movieId: string) {
+  getCast(movieId: string): Observable<Cast[]>{
     return this.http.get<CreditsResponse>(`${this.baseUrl}/movie/${movieId}/credits`,
       { params: this.params }).pipe(
         map( resp => resp.cast),
